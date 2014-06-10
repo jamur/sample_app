@@ -12,7 +12,7 @@ describe "StaticPages" do
 		it { should have_title(full_title('')) }
 		it { should_not have_title('| Home') }
 
-		=begin
+=begin
 		it "should have the content 'Sample App'" do
 			expect(page).to have_content('Sample App')
 		end
@@ -24,13 +24,17 @@ describe "StaticPages" do
 		it "should not have a custom page title" do
 			expect(page).not_to have_title("| Home")
 		end
-		=end
+=end
 	end
 
 	describe "Help page" do
 		before { visit help_path }
 		
+		it { should have_content('Help') }
+		it { should have_title('Help') }
+
 		
+=begin	
 		it "should have the content 'Help'" do
 			visit help_path
 			expect(page).to have_content('Help')
@@ -40,11 +44,16 @@ describe "StaticPages" do
 			visit help_path
 			expect(page).to have_title("Ruby on Rails Tutorial Sample App | Help")
 		end
+=end
 	end
 
 	describe "About page" do
 		before { visit about_path }
 
+		it { should have_content('About Us') }
+		it { should have_title('About Us') }
+
+=begin
 		it "should have the content 'About Us'" do
 			visit about_path
 			expect(page).to have_content('About Us')
@@ -54,6 +63,7 @@ describe "StaticPages" do
 			visit about_path
 			expect(page).to have_title('Ruby on Rails Tutorial Sample App | About Us')
 		end
+=end
 	end
 
   	describe "GET /static_pages/home" do
@@ -66,7 +76,12 @@ describe "StaticPages" do
 	end
 
 	describe "Contact page" do
+		before { visit contact_path }
 
+		it { should have_content('Contact') }
+		it { should have_title('Contact') }
+
+=begin
 		it "should have the content 'Contact'" do
 			visit contact_path
 			expect(page).to have_content('Contact')
@@ -76,5 +91,6 @@ describe "StaticPages" do
 			visit contact_path 
 			expect(page).to have_title("Ruby on Rails Tutorial Sample App | Contact")
 		end
+=end
 	end
 end
